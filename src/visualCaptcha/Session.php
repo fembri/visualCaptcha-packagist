@@ -10,27 +10,26 @@ class Session {
     }
 
     public function clear() {
-        $_SESSION[ $this->namespace ] = Array();
+		app('session')->put($this->namespace, array());
     }
 
     public function get( $key ) {
-        if ( !isset( $_SESSION[ $this->namespace ] ) ) {
+        if ( app('session')->has($this->namespace) == FALSE ) {
             $this->clear();
         }
 
-        if ( isset( $_SESSION[ $this->namespace ][ $key ] ) ) {
-            return $_SESSION[ $this->namespace ][ $key ];
+        if ( app('session')->has("$this->namespace.$key") ) {
+            return app('session')->get("$this->namespace.$key");
         }
 
         return null;
     }
 
     public function set( $key, $value ) {
-        if ( !isset( $_SESSION[ $this->namespace ] ) ) {
+        if ( app('session')->has($this->namespace) == FALSE ) {
             $this->clear();
         }
-
-        $_SESSION[ $this->namespace ][ $key ] = $value;
+		app('session')->put("$this->namespace.$key", $value);
     }
 };
 
