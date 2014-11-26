@@ -1,6 +1,6 @@
 {
     "version": "0.0.3",
-    "name": "emotionloop/visualcaptcha",
+    "name": "fembri/visualcaptcha",
     "description": "PHP library for visualCaptcha. Still requires you to have the front-end companion.",
     "keywords": ["captcha", "visualCaptcha", "security"],
     "homepage": "http://visualcaptcha.net",
@@ -13,9 +13,6 @@
             "homepage": "http://emotionloop.com"
         }
     ],
-    "support": {
-        "issues": "https://github.com/emotionLoop/visualCaptcha-packagist/issues"
-    },
     "require": {
         "php": ">=5.3"
     },
