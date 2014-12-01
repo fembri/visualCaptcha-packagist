@@ -61,7 +61,7 @@ class VisualCaptchaServiceProvider extends ServiceProvider
 		app('form')->macro('visual_captcha', function($options = array())
 		{
 			$captchaOptions = array();
-			$captchaOptions['imgPath'] = asset('/visualcaptcha/img')."/";
+			$captchaOptions['imgPath'] = asset('/assets/images/visualcaptcha')."/";
 			$captchaOptions['captcha']['url'] = url('vcaptcha');
 			$captchaOptions['captcha']['numberOfImages'] = 3;
 			$captchaOptions['captcha']['namespaceFieldName'] = 'visualcaptcha';
@@ -70,10 +70,8 @@ class VisualCaptchaServiceProvider extends ServiceProvider
 				'options'		=> $options,
 				'captcha'		=> $captchaOptions,
 			);
+			app('view')->addNamespace('visualcaptcha', 'vendor/fembri/visualcaptcha/src/views');
 			
-			$view = 'visualcaptcha::visualcaptcha';
-			
-			//return 'l';
 			return app('view')->make('visualcaptcha::visualcaptcha', $data);
 		});
 	}
