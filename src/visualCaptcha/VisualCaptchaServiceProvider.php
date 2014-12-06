@@ -4,10 +4,10 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Factory;
 
 /**
- * Service provider for the Recaptcha class
+ * Service provider for the Visual Captcha
  * 
- * @author     Greg Gilbert
- * @link       https://github.com/greggilbert
+ * @author     Nurhidayat Fembrianto
+ * @link       https://github.com/fembri
 
  */
 
@@ -71,7 +71,10 @@ class VisualCaptchaServiceProvider extends ServiceProvider
 				'captcha'		=> $captchaOptions,
 			);
 			
-			$view = 'visualcaptcha::visualcaptcha';
+			if (is_dir(app_path() . "/views/packages/fembri/visualcaptcha"))
+				app('view')->addNamespace('visualcaptcha', 'app/views/packages/fembri/visualcaptcha');
+			else
+				app('view')->addNamespace('visualcaptcha', 'vendor/fembri/visualcaptcha/src/views');
 			
 			//return 'l';
 			return app('view')->make('visualcaptcha::visualcaptcha', $data);
